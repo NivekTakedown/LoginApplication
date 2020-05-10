@@ -5,6 +5,10 @@
  */
 package Frontera;
 
+import Entidad.Sistema;
+import Entidad.Usuario;
+import java.util.ArrayList;
+
 /**
  *
  * @author Nivektakedown
@@ -13,8 +17,10 @@ public class FramePrincipal extends javax.swing.JFrame {
 
     private Registro registro= new Registro();
     private Ingreso ingreso= new Ingreso();
+    public static Sistema sistema= new Sistema();
     public FramePrincipal() {
         initComponents();
+        inicializacion();
     }
 
     /**
@@ -116,37 +122,39 @@ public class FramePrincipal extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FramePrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FramePrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FramePrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FramePrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
+        
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new FramePrincipal().setVisible(true);
             }
         });
     }
-
+    public static void inicializacion() {
+        ArrayList<Usuario> usuarios = new ArrayList<Usuario>();
+       //-----------------------------------------------------------------------
+        Usuario a= new Usuario();
+        Usuario b= new Usuario();
+        Usuario c= new Usuario();
+       //-----------------------------------------------------------------------
+        a.setNombre("juan");
+        a.setPassword("1234");
+        b.setNombre("pedro");
+        b.setPassword("123");
+        c.setNombre("maria");
+        c.setPassword("12345");
+       //----------------------------------------------------------------------- 
+        usuarios.add(a);
+        usuarios.add(b);
+        usuarios.add(c);
+       //----------------------------------------------------------------------- 
+        sistema.setUsuarios(usuarios);
+        for (Usuario u:sistema.getUsuarios()) {
+            System.out.println(u.getNombre());
+            System.out.println(u.getPassword());
+            System.out.println("------------");
+            
+        }
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel PanelPrincipal;
     private javax.swing.JButton ingresoB;

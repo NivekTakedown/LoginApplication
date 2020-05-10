@@ -5,6 +5,9 @@
  */
 package Frontera;
 
+import Control.ValidarLogin;
+import Entidad.Usuario;
+
 /**
  *
  * @author Nivektakedown
@@ -80,7 +83,14 @@ public class Ingreso extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        Usuario usuario=new Usuario();
+        usuario.setNombre(nombreTF.getText());
+        usuario.setPassword(contraseniaTF.getText());
+        ValidarLogin validar=new ValidarLogin();
+        
+        System.out.println("------------");
+        String resultado=validar.verificarLongin(usuario);
+        System.out.println(resultado);
     }//GEN-LAST:event_jButton1ActionPerformed
 
 
